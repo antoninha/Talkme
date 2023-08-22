@@ -17,6 +17,8 @@ const routes = [
       {
         path: "configurator",
         name: "Configurator",
+        component: () =>
+          import("@/views/Configurator.vue"),
       },
     ],
   },
