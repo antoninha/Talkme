@@ -1,7 +1,5 @@
 <template>
-  <Projection />
+  <h1>Hello World</h1>
 </template>
 
-<script setup>
-  import Projection from '@/components/Projection.vue'
-</script>
+<script setup></script>
