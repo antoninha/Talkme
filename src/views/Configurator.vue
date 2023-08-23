@@ -15,11 +15,14 @@
     <v-col cols="2">
       <v-sheet class="pa-2 ma-2">
         <p>Test</p>
+        <chat-component></chat-component>
       </v-sheet>
     </v-col>
   </v-row>
 </template>
 
-<script setup></script>
+<script setup>
+  import ChatComponent from '../components/chatbot/index.vue';
+</script>
 
 <style></style>
