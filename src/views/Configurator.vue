@@ -46,6 +46,8 @@
       @updateCurrentModuleId="updateCurrentModuleId" 
     />
   </v-row>
+
+  <ChatComponent />
 </template>
 
 <script setup>
@@ -56,6 +58,7 @@ import DoughnutModule from "@/components/modulesTool/DoughnutModule.vue";
 import ResultConfiguration from '@/components/modulesResult/ResultConfiguration.vue';
 import ChoiceModule from '@/components/modulesChoice/ChoiceModule.vue';
 import Tutorials from '@/components/tutorials/Tutorials.vue';
+import ChatComponent from '../components/chatbot/index.vue';
 
 const updateSelectedModules = (newValue) => {
   selectedModules.value = newValue;
