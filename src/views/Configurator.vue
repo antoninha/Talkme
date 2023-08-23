@@ -16,6 +16,7 @@
       <v-sheet class="pa-2 ma-2">
         <p>Test</p>
         <chat-component></chat-component>
+        <RendezVous></RendezVous>
       </v-sheet>
     </v-col>
   </v-row>
@@ -23,6 +24,7 @@
 
 <script setup>
   import ChatComponent from '../components/chatbot/index.vue';
+  import RendezVous from '../components/rendez-vous/index.vue'
 </script>
 
 <style></style>
