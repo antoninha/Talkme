@@ -47,6 +47,7 @@
     />
   </v-row>
 
+  <RendezVous />
   <ChatComponent />
 </template>
 
@@ -59,6 +60,7 @@ import ResultConfiguration from '@/components/modulesResult/ResultConfiguration.
 import ChoiceModule from '@/components/modulesChoice/ChoiceModule.vue';
 import Tutorials from '@/components/tutorials/Tutorials.vue';
 import ChatComponent from '../components/chatbot/index.vue';
+import RendezVous from '../components/rendez-vous/index.vue';
 
 const updateSelectedModules = (newValue) => {
   selectedModules.value = newValue;
