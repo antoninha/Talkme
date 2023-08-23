@@ -7,6 +7,7 @@
         variant="text"
         icon="mdi-minus-circle"
         color="#D34949"
+        @click="updateSelectedModules(props.id)"
       ></v-btn>
       <v-sheet :elevation="4" rounded="lg" class="pa-4">
         <slot></slot>
@@ -16,10 +17,19 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   title: String,
   double: Boolean,
+  id: Number,
+  selectedModules: Object,
 });
+
+const emit = defineEmits(['updateSelectedModules'])
+
+const updateSelectedModules = (idToRemove) => {
+  const updatedData = props.selectedModules.filter(item => item.id !== idToRemove);
+  emit('updateSelectedModules', updatedData)
+}
 </script>
 
 <style>
