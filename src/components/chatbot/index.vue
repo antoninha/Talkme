@@ -66,7 +66,7 @@ export default {
         }
 
         if (predefinedAnswer === '') {
-          predefinedAnswer = "Nous ne comprenons pas votre question.";
+          predefinedAnswer = "Je ne comprend pas votre question.";
         }
 
         messages.value.push({ text: predefinedAnswer, type: 'answer' });
@@ -104,18 +104,19 @@ export default {
   cursor: pointer;
   border-radius: 3px;
   background: #CA8702;
+  display: flex;
+  width: 100%;
+  padding: 6px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
   color: white;
-  padding: 10px;
-  font-weight: bold;
-  text-align: center;
+  text-transform: initial;
 }
 .chat-button.hidden {
   display: none; /* Masquer lorsque la classe hidden est ajoutée */
 }
 .chat-window {
-  position: absolute;
-  top: 0;
-  right: 0;
   width: 100%;
   height: 350px;
   display: flex;
