@@ -1,18 +1,18 @@
 <template>
   <v-row>
-    <v-col cols="2">
+    <v-col cols="3">
+      <v-sheet class="pa-2 ma-2">
+        <Choice></Choice>
+      </v-sheet>
+    </v-col>
+
+    <v-col cols="6">
       <v-sheet class="pa-2 ma-2">
         <p>Test</p>
       </v-sheet>
     </v-col>
 
-    <v-col cols="8">
-      <v-sheet class="pa-2 ma-2">
-        <p>Test</p>
-      </v-sheet>
-    </v-col>
-
-    <v-col cols="2">
+    <v-col cols="3">
       <v-sheet class="pa-2 ma-2">
         <p>Test</p>
       </v-sheet>
@@ -20,6 +20,7 @@
   </v-row>
 </template>
 
-<script setup></script>
+<script setup>
+  import Choice from '@/components/Choice.vue'
 
-<style></style>
+</script>
