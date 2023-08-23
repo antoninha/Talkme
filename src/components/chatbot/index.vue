@@ -1,6 +1,6 @@
 <template>
   <div class="chat-container">
-    <div class="chat-button" @click="toggleChat">Prendre rendez-vous</div>
+    <div class="chat-button" @click="toggleChat">Ouvir le tchat</div>
     <div v-if="chatOpen" class="chat-window">
       <div class="chat-header">
         <div class="chat-header-left">
