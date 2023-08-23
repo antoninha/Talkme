@@ -16,6 +16,10 @@
             <v-btn v-if="!moduleIsAlreadySelected(moduleItem.id)" variant="flat" color="#CA8702" class="text-white" @click="addSelectedModules(moduleItem)">
               Ajouter +
             </v-btn>
+
+            <v-btn v-if="moduleIsAlreadySelected(moduleItem.id)" variant="flat" color="#CA8702" class="text-white" @click="editCurrentModules(moduleItem)">
+              Revisionner
+            </v-btn>
           </div>
         </v-expansion-panel-text>
 
@@ -27,21 +31,28 @@
 <script setup>
   import DialogInfo from './DialogInfo.vue';
 
-  const emit = defineEmits(['updateSelectedModules'])
+  const emit = defineEmits(['updateSelectedModules', 'updateCurrentModuleId'])
 
   const props = defineProps({
     modules: Object,
     selectedModules: Object
   })
 
+
   const moduleIsAlreadySelected = (itemId) => {
     return props.selectedModules.some(selectedModule => selectedModule.id === itemId);
   };
 
   const addSelectedModules = (currentModule) => {
+    console.log(props.modules);
     const newSelectedModule = [...props.selectedModules, currentModule];
     emit('updateSelectedModules', newSelectedModule)
-}
+    emit('updateCurrentModuleId', currentModule.id)
+  }
+
+  const editCurrentModules = (currentModule) => {
+    emit('updateCurrentModuleId', currentModule.id)
+  }
 </script>
   
 <style>
