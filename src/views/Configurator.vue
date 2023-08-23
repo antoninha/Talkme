@@ -2,7 +2,7 @@
   <v-row>
     <v-col cols="3">
       <v-sheet class="pa-2 ma-2">
-        <p>Test</p>
+        <Choice></Choice>
       </v-sheet>
     </v-col>
 
@@ -36,6 +36,7 @@ import ContainerModule from "@/components/modulesTool/ContainerModule.vue";
 import BarModule from "@/components/modulesTool/BarModule.vue";
 import DoughnutModule from "@/components/modulesTool/DoughnutModule.vue";
 import ResultConfiguration from '@/components/modulesResult/ResultConfiguration.vue';
+import Choice from '@/components/Choice.vue'
 
 const updateSelectedModules = (newValue) => {
   selectedModules.value = newValue;
