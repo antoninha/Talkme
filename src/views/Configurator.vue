@@ -2,9 +2,9 @@
   <v-row>
     <v-col cols="3" class="choiceColumn">
       <v-sheet class="pa-2 ma-2" color="#F4F4F4">
-        <ChoiceModule 
-          :modules="modules" 
-          :selectedModules=selectedModules 
+        <ChoiceModule
+          :modules="modules"
+          :selectedModules="selectedModules"
           @updateSelectedModules="updateSelectedModules"
           @updateCurrentModuleId="updateCurrentModuleId"
         />
@@ -13,73 +13,83 @@
 
     <v-col cols="6">
       <v-sheet class="pa-2 ma-2" v-if="getCurrentModule()">
-        <h2 class='pa-2 ma-2'>{{getCurrentModule().title}}</h2>
+        <h2 class="pa-2 ma-2">{{ getCurrentModule().title }}</h2>
         <v-row>
           <v-col
             v-for="(contentModule, index) in getCurrentModule().contentModules"
             :key="index"
             :cols="contentModule.double ? 12 : 6"
           >
-            <ContainerModule 
-              :title="contentModule.label" 
-              :double="contentModule.double" 
-              :id="contentModule.id" 
+            <ContainerModule
+              :title="contentModule.label"
+              :double="contentModule.double"
+              :id="contentModule.id"
               :currentModuleId="currentModuleId"
-              :selectedModules=selectedModules
+              :selectedModules="selectedModules"
               @updateSelectedModules="updateSelectedModules"
             >
               <component :is="contentModule.component" />
             </ContainerModule>
           </v-col>
         </v-row>
+        <AddNewModule
+          class="mt-6"
+          :currentModuleId="currentModuleId"
+          :selectedModules="selectedModules"
+          @updateSelectedModules="updateSelectedModules"
+        />
       </v-sheet>
     </v-col>
 
     <v-col cols="3">
       <v-sheet class="pa-2 ma-2">
-        <ResultConfiguration 
-          :selectedModules=selectedModules 
-          @updateSelectedModules="updateSelectedModules"  
+        <ResultConfiguration
+          :selectedModules="selectedModules"
+          @updateSelectedModules="updateSelectedModules"
         />
       </v-sheet>
-    </v-col> 
+    </v-col>
   </v-row>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { shallowRef } from "vue";
 import ContainerModule from "@/components/modulesTool/ContainerModule.vue";
 import BarModule from "@/components/modulesTool/BarModule.vue";
 import DoughnutModule from "@/components/modulesTool/DoughnutModule.vue";
-import ResultConfiguration from '@/components/modulesResult/ResultConfiguration.vue';
-import ChoiceModule from '@/components/modulesChoice/ChoiceModule.vue'
+import ResultConfiguration from "@/components/modulesResult/ResultConfiguration.vue";
+import ChoiceModule from "@/components/modulesChoice/ChoiceModule.vue";
+import TableModule from "@/components/modulesTool/TableModule.vue";
+import StatsModule from "@/components/modulesTool/StatsModule.vue";
+import AddNewModule from "@/components/modulesTool/AddNewModule.vue";
 
 const updateSelectedModules = (newValue) => {
-  console.log(newValue);
   selectedModules.value = newValue;
-  console.log(selectedModules.value);
-}
+};
 
 const updateCurrentModuleId = (newValue) => {
   currentModuleId.value = newValue;
-}
+};
 
 const getCurrentModule = () => {
-  const currentModule = selectedModules.value.find(item => item.id === currentModuleId.value);
+  const currentModule = selectedModules.value.find(
+    (item) => item.id === currentModuleId.value
+  );
   return currentModule;
-}
+};
 
-const selectedModules = ref([]);
-const currentModuleId = ref();
+const selectedModules = shallowRef([]);
+const currentModuleId = shallowRef();
 
-const modules = ref([
+const modules = shallowRef([
   {
     id: 1,
     title: "Commandes et ventes",
     icon: "mdi-ticket-confirmation-outline",
     color: "#1234AD",
     description: "adadad",
-    completeDescription:"Nisi eiusmod anim incididunt excepteur eu cupidatat do voluptate.",
+    completeDescription:
+      "Nisi eiusmod anim incididunt excepteur eu cupidatat do voluptate.",
     contentModules: [
       {
         id: 1,
@@ -90,8 +100,8 @@ const modules = ref([
       {
         id: 2,
         label: "Status de l'acheteur",
-        double: false,
-        component: DoughnutModule,
+        double: true,
+        component: TableModule,
       },
       {
         id: 3,
@@ -107,7 +117,8 @@ const modules = ref([
     icon: "mdi-file-document-outline",
     color: "#707070",
     description: "adadad",
-    completeDescription:"Nisi eiusmod anim incididunt excepteur eu cupidatat do voluptate.",
+    completeDescription:
+      "Nisi eiusmod anim incididunt excepteur eu cupidatat do voluptate.",
     contentModules: [
       {
         id: 1,
@@ -120,7 +131,13 @@ const modules = ref([
         label: "Type de facture",
         double: false,
         component: DoughnutModule,
-      }
+      },
+      {
+        id: 3,
+        label: "Type de facture",
+        double: true,
+        component: StatsModule,
+      },
     ],
   },
   {
@@ -129,36 +146,36 @@ const modules = ref([
     icon: "mdi-factory",
     color: "#B1340C",
     description: "adadad",
-    completeDescription:"Nisi eiusmod anim incididunt excepteur eu cupidatat do voluptate.",
+    completeDescription:
+      "Nisi eiusmod anim incididunt excepteur eu cupidatat do voluptate.",
     contentModules: [
-        {
-          id: 1,
-          label: "Production machine 1",
-          double: true,
-          component: BarModule,
-        },
-        {
-          id: 2,
-          label: "Production machine 2",
-          double: true,
-          component: BarModule,
-        },
-        {
-          id: 3,
-          label: "Production machine 3",
-          double: true,
-          component: BarModule,
-        },
-        {
-          id: 4,
-          label: "Production machine 4",
-          double: true,
-          component: BarModule,
-        }
-    ]
-  }
+      {
+        id: 1,
+        label: "Production machine 1",
+        double: true,
+        component: BarModule,
+      },
+      {
+        id: 2,
+        label: "Production machine 2",
+        double: true,
+        component: BarModule,
+      },
+      {
+        id: 3,
+        label: "Production machine 3",
+        double: true,
+        component: BarModule,
+      },
+      {
+        id: 4,
+        label: "Production machine 4",
+        double: true,
+        component: BarModule,
+      },
+    ],
+  },
 ]);
-
 </script>
 
 <style>
@@ -169,7 +186,7 @@ const modules = ref([
 }
 
 .choiceColumn {
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   min-height: 100vh;
 }
 </style>
