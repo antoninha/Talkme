@@ -52,6 +52,8 @@
       @updateCurrentModuleId="updateCurrentModuleId"
     />
   </v-row>
+
+  <ChatComponent />
 </template>
 
 <script setup>
@@ -65,6 +67,7 @@ import TableModule from "@/components/modulesTool/TableModule.vue";
 import StatsModule from "@/components/modulesTool/StatsModule.vue";
 import AddNewModule from "@/components/modulesTool/AddNewModule.vue";
 import Tutorials from "@/components/tutorials/Tutorials.vue";
+import ChatComponent from '../components/chatbot/Chatbot.vue';
 
 const updateSelectedModules = (newValue) => {
   selectedModules.value = newValue;
