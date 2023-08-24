@@ -1,4 +1,6 @@
 <template>
+  <Tutorials />
+
   <v-row>
     <v-col cols="3" class="choiceColumn">
       <v-sheet class="pa-2 ma-2" color="#F4F4F4">
@@ -52,7 +54,8 @@ import ContainerModule from "@/components/modulesTool/ContainerModule.vue";
 import BarModule from "@/components/modulesTool/BarModule.vue";
 import DoughnutModule from "@/components/modulesTool/DoughnutModule.vue";
 import ResultConfiguration from '@/components/modulesResult/ResultConfiguration.vue';
-import ChoiceModule from '@/components/modulesChoice/ChoiceModule.vue'
+import ChoiceModule from '@/components/modulesChoice/ChoiceModule.vue';
+import Tutorials from '@/components/tutorials/Tutorials.vue';
 
 const updateSelectedModules = (newValue) => {
   selectedModules.value = newValue;
