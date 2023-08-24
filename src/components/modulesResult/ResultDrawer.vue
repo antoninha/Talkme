@@ -1,22 +1,29 @@
 <template>
   <v-col cols="3" :class="{active: props.display}" class="drawer">
     <div class="fixedDrawer v-col-3">
-      <div class="pa-2 ma-2">
-        <div class="close">
-          <v-btn variant="text" icon="mdi-close" color="#CA8702" @click="$emit('toggle', false)"></v-btn>
-        </div>
+      <div class="pa-2 ma-2 allHeight">
+       
+        <div class="d-flex flex-column justify-space-between allHeight">
+          <div>
+            <div class="close">
+              <v-btn variant="text" icon="mdi-close" color="#CA8702" @click="$emit('toggle', false)"></v-btn>
+            </div>
+            <h2 class="mt-5 mb-5">Votre sélection</h2>
+            <v-divider class="mb-10"></v-divider>
+    
+            <div v-for="(selectedModule, index) in selectedModules" :key="index">
+              <ItemResultModule 
+                @updateSelectedModules="updateSelectedModules"
+                @updateCurrentModuleId="updateCurrentModuleId"
+                :selectedModule="selectedModule"
+                :selectedModules="selectedModules"
+              />
+            </div>
+          </div>
 
-
-        <h2 class="mt-5 mb-5">Votre sélection</h2>
-        <v-divider class="mb-10"></v-divider>
-
-        <div v-for="(selectedModule, index) in selectedModules" :key="index">
-          <ItemResultModule 
-            @updateSelectedModules="updateSelectedModules"
-            @updateCurrentModuleId="updateCurrentModuleId"
-            :selectedModule="selectedModule"
-            :selectedModules="selectedModules"
-          />
+          <div>
+            <RendezVous />
+          </div>
         </div>
 
       </div>
@@ -25,6 +32,7 @@
 </template>
 
 <script setup>
+import RendezVous from '../rendezVous/RendezVous.vue';
 import ItemResultModule from './ItemResultModule.vue';
 import { defineProps } from 'vue';
 
@@ -60,6 +68,11 @@ const updateCurrentModuleId = (newValue) => {
   position: fixed;
   right: 0;
   top: 0;
+  height: 100vh;
+}
+
+.allHeight {
+  height: 100%;
 }
 .close {
   text-align: right;

@@ -47,7 +47,6 @@
     />
   </v-row>
 
-  <RendezVous />
   <ChatComponent />
 </template>
 
@@ -59,8 +58,7 @@ import DoughnutModule from "@/components/modulesTool/DoughnutModule.vue";
 import ResultConfiguration from '@/components/modulesResult/ResultConfiguration.vue';
 import ChoiceModule from '@/components/modulesChoice/ChoiceModule.vue';
 import Tutorials from '@/components/tutorials/Tutorials.vue';
-import ChatComponent from '../components/chatbot/index.vue';
-import RendezVous from '../components/rendez-vous/index.vue';
+import ChatComponent from '../components/chatbot/Chatbot.vue';
 
 const updateSelectedModules = (newValue) => {
   selectedModules.value = newValue;

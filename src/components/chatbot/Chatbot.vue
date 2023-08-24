@@ -4,7 +4,7 @@
     <div v-if="chatOpen" class="chat-window">
       <div class="chat-header">
         <div class="chat-header-left">
-          <img src="../../assets/bot.svg" />
+          <img src="/assets/bot.svg" />
           <div class="chat-header-text">
             <span>Léon Bot</span>
             <span>En ligne</span>
@@ -15,7 +15,7 @@
       <div class="chat-messages">
         <div v-for="message in messages" :key="message.id">
           <span v-if="message.type === 'answer'" class="bot">
-            <img src="../../assets/bot.svg" />
+            <img src="/assets/bot.svg" />
             Léon bot
           </span>
           <div  :class="['message', message.type]">
@@ -58,17 +58,13 @@ export default {
       if (inputMessage.value.trim() !== '') {
         messages.value.push({ text: inputMessage.value, type: 'question' });
 
-        let predefinedAnswer = '';
+        let predefinedAnswer = 'a';
 
-        if (inputMessage.value.includes('quelle technologie utilisez-vous')) {
+        if (inputMessage.value.includes('quelle technologie utilisez-vous ?')) {
           predefinedAnswer = 'Nous utilisons Vue.js pour notre application.';
-        }
-
-        if (inputMessage.value.includes('À quoi sert la solution proposée ?')) {
+        } else if (inputMessage.value.includes('À quoi sert la solution proposée ?')) {
           predefinedAnswer = 'TM FACTORY apporte du lien entre vos outils et vos collaborateurs. Il centralise d’un côté les données de vos logiciels et de l’autre celles de vos machines.';
-        }
-
-        if (predefinedAnswer === '') {
+        } else {
           predefinedAnswer = "Je ne comprend pas votre question.";
         }
 
@@ -115,7 +111,7 @@ export default {
 .chat-container {
   position: fixed;
   right: 30px;
-  bottom: 90px;
+  bottom: 8rem;
   padding: 0;
 }
 .chat-button {
@@ -123,7 +119,8 @@ export default {
   border-radius: 3px;
   background: #CA8702;
   display: flex;
-  width: 100%;
+  width: 3rem;
+  height:3rem;
   padding: 6px;
   justify-content: center;
   align-items: center;
