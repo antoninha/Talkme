@@ -34,7 +34,7 @@
           </div>
           <div v-if="afficherDatePicker">
             <v-locale-provider>
-              <v-date-picker show-adjacent-months></v-date-picker>
+              <v-date-picker></v-date-picker>
             </v-locale-provider>
           </div>
           <div class="right" v-if="afficherContenuDroit">
