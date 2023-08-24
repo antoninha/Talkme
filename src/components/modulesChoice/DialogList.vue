@@ -1,13 +1,5 @@
 <template>
-    <div class="text-center">
-    <v-btn
-        size="small"
-        variant="outlined" 
-        color="#CA8702">
-    
-        En savoir plus
-
-      <v-dialog
+    <v-dialog
         v-model="dialog"
         activator="parent"
         width="auto"
@@ -19,22 +11,14 @@
           </v-card-text>
           <v-img src="src\assets\dialogImg.png" class="px-10"></v-img>
           <v-card-actions class="ml-4 py-5">
-            <v-btn  variant="flat" color="#CA8702" class="text-white" @click="dialog=false">
+            <v-btn v-if="!moduleIsAlreadySelected(moduleItem.id)" variant="flat" color="#CA8702" class="text-white" @click="addSelectedModules(moduleItem)">
               Ajouter +
             </v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
-    </v-btn>
-  </div>
 </template>
+
 <script setup>
-    import { ref } from 'vue';
 
-    defineProps({
-        item:Object
-    })
-
-    const dialog = ref(false)
-  
 </script>

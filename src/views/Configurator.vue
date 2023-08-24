@@ -85,12 +85,12 @@ const modules = ref([
     title: "Commandes et ventes",
     icon: "mdi-ticket-confirmation-outline",
     color: "#1234AD",
-    description: "adadad",
+    description: "Le module de commandes et ventes gère l'ensemble du processus de vente, de la création des commandes à la facturation. Il inclut la gestion des stocks, les devis, les commandes clients, les tarifs, les livraisons et les factures pour optimiser la gestion commerciale.", 
     completeDescription:"Nisi eiusmod anim incididunt excepteur eu cupidatat do voluptate.",
     contentModules: [
       {
         id: 1,
-        label: "lieu de livraison",
+        label: "Lieu de livraison",
         double: false,
         component: DoughnutModule,
       },

@@ -1,6 +1,15 @@
 <template>
+      <v-img
+      :width="200"
+      aspect-ratio="16/9"
+      cover
+      src="src\assets\logo.png"
+      class="logo"
+    ></v-img>
+
   <div v-for="(moduleItem, index) in modules" :key=index>
-    <v-expansion-panels class="pa-2" elevation="n-0" >
+
+        <v-expansion-panels class="pa-2" elevation="n-0" >
       <v-expansion-panel class="elevation-0">
 
         <v-expansion-panel-title class="panel-title">
@@ -9,15 +18,23 @@
         </v-expansion-panel-title>
 
         <v-expansion-panel-text class="d-flex flex-column">
-          <p class="my-3">{{moduleItem.text}}</p>
-          <div class="d-flex justify-space-between">
+          <p class="my-3">{{moduleItem.description}}</p>
+          <div class="d-flex justify-space-between flex-wrap">
             <DialogInfo :item="moduleItem"></DialogInfo>
 
-            <v-btn v-if="!moduleIsAlreadySelected(moduleItem.id)" variant="flat" color="#CA8702" class="text-white" @click="addSelectedModules(moduleItem)">
+            <v-btn size="small" v-if="!moduleIsAlreadySelected(moduleItem.id)" variant="flat" color="#CA8702" class="text-white" @click="addSelectedModules(moduleItem)">
               Ajouter +
             </v-btn>
 
-            <v-btn v-if="moduleIsAlreadySelected(moduleItem.id)" :disabled="isCurrentModule(moduleItem.id)" variant="flat" color="#CA8702" class="text-white" @click="editCurrentModules(moduleItem)">
+            <v-btn 
+              size="small" 
+              variant="flat" 
+              color="#CA8702" 
+              class="text-white" 
+              v-if="moduleIsAlreadySelected(moduleItem.id)" 
+              :disabled="isCurrentModule(moduleItem.id)" 
+              @click="editCurrentModules(moduleItem)"
+            >
               Revisionner
             </v-btn>
           </div>
@@ -68,10 +85,15 @@
   }
   
   .v-expansion-panel-text {
+    text-align: justify;
     border-top: 2px solid #F3F3F3;
   }
 
   .v-expansion-panel .v-expansion-panel__shadow {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
+  }
+  .logo{
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>
