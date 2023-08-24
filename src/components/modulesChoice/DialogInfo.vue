@@ -19,7 +19,7 @@
           <h1>{{item.title}}</h1>
           <p>{{item.completeDescription}}</p>
         </v-card-text>
-        <v-img src="src\assets\dialogImg.png" class="px-10"></v-img>
+        <v-img src="/assets/dialogImg.png" class="px-5" maxWidth="40rem"></v-img>
         <v-card-actions class="ml-4 py-5">
           <v-btn  variant="flat" color="#CA8702" class="text-white" @click="page++" :disabled="moduleIsAlreadySelected">
             Ajouter +

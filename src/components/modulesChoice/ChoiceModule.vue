@@ -1,11 +1,11 @@
 <template>
-      <v-img
+    <v-img
       :width="200"
       aspect-ratio="16/9"
       cover
-      src="src\assets\logo.png"
-      class="logo"
-    ></v-img>
+      src="/assets/logo.png"
+      class="logo mb-5 mt-5"
+    />
 
   <div v-for="(moduleItem, index) in modules" :key=index>
 
