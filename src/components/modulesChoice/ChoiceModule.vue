@@ -43,7 +43,7 @@
               class="text-white" 
               v-if="moduleIsAlreadySelected(moduleItem.id)" 
               :disabled="isCurrentModule(moduleItem.id)" 
-              @click="updateCurrentModuleId(moduleItem)"
+              @click="updateCurrentModuleId(moduleItem.id)"
             >
               Revisionner
             </v-btn>
@@ -76,6 +76,7 @@ import DialogSelectContentModule from './DialogSelectContentModule.vue';
   }
 
   const updateCurrentModuleId = (newValue) => {
+      console.log(newValue);
       emit('updateCurrentModuleId', newValue)
   }
 

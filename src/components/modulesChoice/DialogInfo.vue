@@ -12,8 +12,9 @@
       v-model="dialog"
       activator="parent"
       width="auto"
+      maxWidth="60%"
     >
-      <v-card class="d-flex flew-row" v-if="page === 0">
+      <v-card class="d-flex flew-row px-7 py-7" v-if="page === 0">
         <v-card-text>
           <h1>{{item.title}}</h1>
           <p>{{item.completeDescription}}</p>
