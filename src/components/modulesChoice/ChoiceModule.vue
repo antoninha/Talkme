@@ -9,7 +9,7 @@
 
   <div v-for="(moduleItem, index) in modules" :key=index>
 
-        <v-expansion-panels class="pa-2" elevation="n-0" >
+    <v-expansion-panels class="pa-2" elevation="n-0" >
       <v-expansion-panel class="elevation-0">
 
         <v-expansion-panel-title class="panel-title">
@@ -20,12 +20,22 @@
         <v-expansion-panel-text class="d-flex flex-column">
           <p class="my-3">{{moduleItem.description}}</p>
           <div class="d-flex justify-space-between flex-wrap">
-            <DialogInfo :item="moduleItem"></DialogInfo>
+            <DialogInfo 
+              :item="moduleItem"
+              :selectedModules="selectedModules"
+              :moduleIsAlreadySelected="moduleIsAlreadySelected(moduleItem.id)"
+              @updateSelectedModules="updateSelectedModules"
+              @updateCurrentModuleId="updateCurrentModuleId"
+            />
 
-            <v-btn size="small" v-if="!moduleIsAlreadySelected(moduleItem.id)" variant="flat" color="#CA8702" class="text-white" @click="addSelectedModules(moduleItem)">
-              Ajouter +
-            </v-btn>
-
+            <DialogSelectContentModule 
+              v-if="!moduleIsAlreadySelected(moduleItem.id)"
+              :item="moduleItem"
+              :selectedModules="selectedModules"
+              @updateSelectedModules="updateSelectedModules"
+              @updateCurrentModuleId="updateCurrentModuleId"
+            />
+            
             <v-btn 
               size="small" 
               variant="flat" 
@@ -33,7 +43,7 @@
               class="text-white" 
               v-if="moduleIsAlreadySelected(moduleItem.id)" 
               :disabled="isCurrentModule(moduleItem.id)" 
-              @click="editCurrentModules(moduleItem)"
+              @click="updateCurrentModuleId(moduleItem)"
             >
               Revisionner
             </v-btn>
@@ -46,10 +56,11 @@
 </template>
   
 <script setup>
-  import DialogInfo from './DialogInfo.vue';
+import DialogInfo from './DialogInfo.vue';
+import DialogSelectContentModule from './DialogSelectContentModule.vue';
 
   const emit = defineEmits(['updateSelectedModules', 'updateCurrentModuleId'])
-
+  
   const props = defineProps({
     modules: Object,
     selectedModules: Object,
@@ -60,14 +71,12 @@
     return props.selectedModules.some(selectedModule => selectedModule.id === itemId);
   };
 
-  const addSelectedModules = (currentModule) => {
-    const newSelectedModule = [...props.selectedModules, currentModule];
-    emit('updateSelectedModules', newSelectedModule)
-    emit('updateCurrentModuleId', currentModule.id)
+  const updateSelectedModules = (newValue) => {
+      emit('updateSelectedModules', newValue)
   }
 
-  const editCurrentModules = (currentModule) => {
-    emit('updateCurrentModuleId', currentModule.id)
+  const updateCurrentModuleId = (newValue) => {
+      emit('updateCurrentModuleId', newValue)
   }
 
   const isCurrentModule = (moduleId) => {
