@@ -17,7 +17,7 @@
               Ajouter +
             </v-btn>
 
-            <v-btn v-if="moduleIsAlreadySelected(moduleItem.id)" variant="flat" color="#CA8702" class="text-white" @click="editCurrentModules(moduleItem)">
+            <v-btn v-if="moduleIsAlreadySelected(moduleItem.id)" :disabled="isCurrentModule(moduleItem.id)" variant="flat" color="#CA8702" class="text-white" @click="editCurrentModules(moduleItem)">
               Revisionner
             </v-btn>
           </div>
@@ -35,16 +35,15 @@
 
   const props = defineProps({
     modules: Object,
-    selectedModules: Object
+    selectedModules: Object,
+    currentModuleId: Number,
   })
-
 
   const moduleIsAlreadySelected = (itemId) => {
     return props.selectedModules.some(selectedModule => selectedModule.id === itemId);
   };
 
   const addSelectedModules = (currentModule) => {
-    console.log(props.modules);
     const newSelectedModule = [...props.selectedModules, currentModule];
     emit('updateSelectedModules', newSelectedModule)
     emit('updateCurrentModuleId', currentModule.id)
@@ -52,6 +51,14 @@
 
   const editCurrentModules = (currentModule) => {
     emit('updateCurrentModuleId', currentModule.id)
+  }
+
+  const isCurrentModule = (moduleId) => {
+    if (props.currentModuleId === moduleId) {
+      return true;
+    }else {
+      return false;
+    }
   }
 </script>
   
