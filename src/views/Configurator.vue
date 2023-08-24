@@ -15,16 +15,16 @@
     <v-col cols="2">
       <v-sheet class="pa-2 ma-2">
         <p>Test</p>
-        <chat-component></chat-component>
-        <RendezVous></RendezVous>
       </v-sheet>
     </v-col>
   </v-row>
+  <chat-component></chat-component>
+  <RendezVous></RendezVous>
 </template>
 
 <script setup>
-  import ChatComponent from '../components/chatbot/index.vue';
-  import RendezVous from '../components/rendez-vous/index.vue'
+  import ChatComponent from '../components/chatbot/Chatbot.vue';
+  import RendezVous from '../components/rendez-vous/RendezVous.vue'
 </script>
 
 <style></style>
