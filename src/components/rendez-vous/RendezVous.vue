@@ -37,7 +37,7 @@
               <v-date-picker></v-date-picker>
             </v-locale-provider>
           </div>
-          <div class="right" v-if="afficherContenuDroit">
+          <div class="right" v-if="afficherDatePicker">
             <v-btn class="close" variant="text" icon="mdi-close" @click="dialog = false"></v-btn>
             <p>Vendredi 25 août 2023</p>
             <ul>
@@ -86,32 +86,25 @@ export default {
   },
   setup() {
     const dialog = ref(false);
-    const selectedDate = ref(null);
     const afficherDatePicker = ref(true);
-    const afficherContenuDroit = ref(true);
     const afficherFormulaire = ref(false);
 
     const calendrierSuivant = () => {
       afficherDatePicker.value = false;
-      afficherContenuDroit.value = false;
       afficherFormulaire.value = true;
     };
 
     const dialogContent = () =>{
       dialog.value = false
-      // Ajoutez un délai de 1 seconde (1000 ms) avant de mettre à jour les variables
       setTimeout(() => {
         afficherDatePicker.value = true;
-        afficherContenuDroit.value = true;
         afficherFormulaire.value = false;
-      }, 1000); // 1000 ms = 1 seconde
+      }, 1000);
     }
 
     return {
       dialog,
-      selectedDate,
       afficherDatePicker,
-      afficherContenuDroit,
       afficherFormulaire,
       calendrierSuivant,
       dialogContent
