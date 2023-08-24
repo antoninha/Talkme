@@ -32,10 +32,8 @@
               tableau de bord de l'administrateur en amont.
             </p>
           </div>
-          <div v-if="afficherDatePicker">
-            <v-locale-provider>
-              <v-date-picker></v-date-picker>
-            </v-locale-provider>
+          <div v-if="afficherDatePicker" class="calendar">
+            <img src="./calendar.svg" alt="">
           </div>
           <div class="right" v-if="afficherDatePicker">
             <v-btn class="close" variant="text" icon="mdi-close" @click="dialog = false"></v-btn>
@@ -114,6 +112,10 @@ export default {
 </script>
 
 <style scoped>
+.calendar{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 .remove{
   display: none;
 }
