@@ -5,13 +5,14 @@
         <ChoiceModule 
           :modules="modules" 
           :selectedModules=selectedModules 
+          :currentModuleId="currentModuleId"
           @updateSelectedModules="updateSelectedModules"
           @updateCurrentModuleId="updateCurrentModuleId"
         />
       </v-sheet>
     </v-col>
 
-    <v-col cols="6">
+    <v-col :key="forceUpdate">
       <v-sheet class="pa-2 ma-2" v-if="getCurrentModule()">
         <h2 class='pa-2 ma-2'>{{getCurrentModule().title}}</h2>
         <v-row>
@@ -34,15 +35,14 @@
         </v-row>
       </v-sheet>
     </v-col>
-
-    <v-col cols="3">
-      <v-sheet class="pa-2 ma-2">
-        <ResultConfiguration 
-          :selectedModules=selectedModules 
-          @updateSelectedModules="updateSelectedModules"  
-        />
-      </v-sheet>
-    </v-col> 
+    
+    <ResultConfiguration 
+      :selectedModules=selectedModules 
+      :forceUpdate="forceUpdate"
+      @updateSelectedModules="updateSelectedModules"  
+      @forceReloadComponent="forceReloadComponent" 
+      @updateCurrentModuleId="updateCurrentModuleId" 
+    />
   </v-row>
 </template>
 
@@ -55,9 +55,11 @@ import ResultConfiguration from '@/components/modulesResult/ResultConfiguration.
 import ChoiceModule from '@/components/modulesChoice/ChoiceModule.vue'
 
 const updateSelectedModules = (newValue) => {
-  console.log(newValue);
   selectedModules.value = newValue;
-  console.log(selectedModules.value);
+}
+
+const forceReloadComponent = (newValue) => {
+  forceUpdate.value = newValue;
 }
 
 const updateCurrentModuleId = (newValue) => {
@@ -71,6 +73,8 @@ const getCurrentModule = () => {
 
 const selectedModules = ref([]);
 const currentModuleId = ref();
+const forceUpdate = ref(0);
+
 
 const modules = ref([
   {
@@ -134,13 +138,13 @@ const modules = ref([
         {
           id: 1,
           label: "Production machine 1",
-          double: true,
+          double: false,
           component: BarModule,
         },
         {
           id: 2,
           label: "Production machine 2",
-          double: true,
+          double: false,
           component: BarModule,
         },
         {
