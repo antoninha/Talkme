@@ -38,8 +38,6 @@ const removeContentModule = (contentModuleId) => {
     return selectedModule;
   });
 
-  console.log(newSelectedModule);
-
   emit('updateSelectedModules', newSelectedModule);
 };
 
