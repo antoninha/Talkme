@@ -11,11 +11,13 @@
 
 <script setup>
     const props = defineProps(['selectedModule', 'selectedModules'])
-    const emit = defineEmits(['updateSelectedModules'])
+    const emit = defineEmits(['updateSelectedModules', 'updateCurrentModuleId'])
 
     const updateSelectedModules = (idToRemove) => {
         const updatedData = props.selectedModules.filter(item => item.id !== idToRemove);
+        const updateCurrentModuleId = updatedData.length ? updatedData[0].id : 0;
         emit('updateSelectedModules', updatedData)
+        emit('updateCurrentModuleId', updateCurrentModuleId)
     }
 </script>
 
