@@ -60,9 +60,9 @@ export default {
 
         let predefinedAnswer = 'a';
 
-        if (inputMessage.value.includes('quelle technologie utilisez-vous ?')) {
+        if (inputMessage.value.includes('quelle technologie utilisez vous ?')) {
           predefinedAnswer = 'Nous utilisons Vue.js pour notre application.';
-        } else if (inputMessage.value.includes('À quoi sert la solution proposée ?')) {
+        } else if (inputMessage.value.includes('à quoi sert la solution proposée ?')) {
           predefinedAnswer = 'TM FACTORY apporte du lien entre vos outils et vos collaborateurs. Il centralise d’un côté les données de vos logiciels et de l’autre celles de vos machines.';
         } else {
           predefinedAnswer = "Je ne comprend pas votre question.";
