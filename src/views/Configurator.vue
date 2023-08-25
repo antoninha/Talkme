@@ -147,7 +147,7 @@ const modules = ref([
       },
       {
         id: 3,
-        label: "Type de facture",
+        label: "Statistique des commandes",
         double: true,
         component: StatsModule,
       },
