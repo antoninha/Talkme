@@ -99,8 +99,8 @@ function addContentModule() {
 }
 
 const existingModules = ref([
-  { id: 1, label: "Graphique en bar", component: BarModule },
-  { id: 2, label: "Graphique en camenbert", component: DoughnutModule },
+  { id: 1, label: "Graphique en barre", component: BarModule },
+  { id: 2, label: "Graphique en camembert", component: DoughnutModule },
   { id: 3, label: "Statistiques", component: StatsModule },
   { id: 4, label: "Tableau", component: TableModule },
 ]);
