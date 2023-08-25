@@ -56,9 +56,9 @@ export default {
 
     const sendMessage = () => {
       if (inputMessage.value.trim() !== '') {
-        messages.value.push({ text: inputMessage.value, type: 'question' });
+        messages.value.push({ text: inputMessage.value.toLowerCase(), type: 'question' });
 
-        let predefinedAnswer = 'a';
+        let predefinedAnswer = '';
 
         if (inputMessage.value.includes('quelle technologie utilisez vous ?')) {
           predefinedAnswer = 'Nous utilisons Vue.js pour notre application.';
